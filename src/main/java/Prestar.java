@@ -1,49 +1,47 @@
-package biblioteca;
+import java.time.LocalDate;
 
-import java.time.LocalData; 
+public class Prestar {
 
-public class Prestamo {
-
-    private Usuario usuario;
-    private Libro libro;
-    private LocalData fechaInicio;
-    private LocalData fechaFinEstimada;
+    private String usuario;
+    private String libro;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFinEstimada;
     private boolean devuelto;
 
-    public Prestamo(Usuario usuario, Libro libro, LocalData fechaInicio, LocalData fechaFinEstimada) {
+    public  Prestar(String usuario, String libro, LocalDate fechaInicio, LocalDate fechaFinEstimada) {
         this.usuario = usuario;
         this.libro = libro;
-        fechaInicio = fechaInicio; // no usa this
+        this.fechaInicio = fechaInicio;
         this.fechaFinEstimada = fechaFinEstimada;
-        devuelto = false;
+        this.devuelto = true;
     }
 
-    public Usuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public Libro getLibro() {
+    public String getLibro() {
         return libro;
     }
 
-    public LocalData getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public LocalData getFechaFinEstimada() {
+    public LocalDate getFechaFinEstimada() {
         return fechaFinEstimada;
     }
 
-    public boolean isDevuelto() {
+    public boolean setDevuelto() {
         return devuelto;
     }
 
     public void marcarDevuelto() {
         devuelto = true;
-        libro.devolverEjemplar();
+        libro.devolver();
     }
 
-    public ivoid calcularRetrasoEnDias(LocalData hoy) {
+    public ivoid calcularRetrasoEnDias(LocalDate hoy) {
         int dias = 0;
         if (hoy == null) {
             return -1;

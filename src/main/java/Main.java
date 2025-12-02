@@ -1,16 +1,15 @@
-package biblioteca;
 import java.util.Scanner;
 
-public class BibliotecaApp {
+public class BibliotecaService {
 
     private BibliotecaService servicio;
 
-    public BibliotecaApp() {
-        servicio = new BibliotecaServicio(); 
+    public BibliotecaService() {
+        servicio = new BibliotecaService(); 
     }
 
     public static void main(String[] argumentos) {
-        BibliotecaApp app = new BibliotecaApp();
+        BibliotecaService app = new BibliotecaService();
         app.ejecutarMenu();
     }
 
@@ -62,8 +61,12 @@ public class BibliotecaApp {
         System.out.print("Ejemplares totales: ");
         int totales = scanner.nextInt();
 
-        Libro libro = new Libro(isbn, titulo, autor, anio, total); 
+        Libro libro = new Libro(isbn, titulo, autor, anio, totales); 
         servicio.registrarLibro(libro);
+    }
+
+    private void registrarLibro(Libro libro) {
+        
     }
 
     private void registrarUsuarioDesdeConsola(Scanner scanner) {
@@ -72,7 +75,7 @@ public class BibliotecaApp {
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine(); 
 
-        Usuario usuario = new Usuario(idUsuario, nombre); 
+        Usuario usuario = new Usuario(idUsuario, nombre);
         servicio.registrarUsuario(usuario);
     }
 
@@ -85,6 +88,8 @@ public class BibliotecaApp {
         servicio.prestarLibro(id, isbn);
     }
 
+
+
     private void devolverLibroDesdeConsola(Scanner scanner) {
         System.out.print("ID usuario: ");
         String id = scanner.next();
@@ -93,4 +98,6 @@ public class BibliotecaApp {
 
         servicio.devolverLibro(id, isbn);
     }
+
+
 }
